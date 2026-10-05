@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Plainly — boundaries & interest</title>
+    <meta
+      name="description"
+      content="Say where you stand. Send a crush note. Keep a friends journal. Boundaries, plainly."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./styles.css?v=9" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true">
+      <div class="wash wash-a"></div>
+      <div class="wash wash-b"></div>
+      <div class="grain"></div>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#spectrum" data-nav="spectrum">Plainly</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#spectrum" data-nav="spectrum">Spectrum</a>
+        <a href="#crush" data-nav="crush">Crush note</a>
+        <a href="#journal" data-nav="journal">Journal</a>
+        <a href="#together" data-nav="together">Together</a>
+        <a href="#profile" data-nav="profile">Profile</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- SPECTRUM -->
+      <div class="view" id="view-spectrum" hidden>
+        <section class="hero" aria-labelledby="hero-title">
+          <h1 id="hero-title" class="hero-brand">Plainly</h1>
+          <p class="hero-line">Say where you stand. Say what that means.</p>
+
+          <div class="spectrum-block">
+            <div class="spectrum-labels" aria-hidden="true">
+              <span>enemies</span>
+              <span>love</span>
+            </div>
+
+            <div
+              class="spectrum"
+              id="spectrum"
+              role="slider"
+              tabindex="0"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="50"
+              aria-valuetext="Neutral"
+              aria-label="Feeling spectrum from enemies to love"
+            >
+              <div class="spectrum-track">
+                <div class="spectrum-fill" id="spectrum-fill"></div>
+                <div class="spectrum-zones" id="spectrum-zones"></div>
+                <div class="spectrum-thumb" id="spectrum-thumb"></div>
+              </div>
+            </div>
+
+            <p class="spectrum-now" id="spectrum-now">
+              <span class="now-kicker">Standing at</span>
+              <span class="now-label" id="now-label">Neutral</span>
+            </p>
+          </div>
+        </section>
+
+        <section class="detail" id="detail" aria-live="polite">
+          <div class="detail-intro">
+            <p class="zone-kicker" id="zone-kicker">In this range</p>
+            <h2 class="zone-title" id="zone-title">Neutral</h2>
+            <p class="zone-blurb" id="zone-blurb"></p>
+          </div>
+
+          <div
+            class="subtype-row"
+            id="subtype-row"
+            role="tablist"
+            aria-label="How this feeling shows up"
+          ></div>
+
+          <article class="boundary-panel" id="boundary-panel">
+            <header class="boundary-header">
+              <div class="boundary-heading-row">
+                <h3 class="subtype-title" id="subtype-title"></h3>
+                <button type="button" class="copy-link" id="copy-link" hidden>
+                  Copy link to this stance
+                </button>
+              </div>
+              <p class="subtype-blurb" id="subtype-blurb"></p>
+            </header>
+            <p class="zone-kicker boundaries-kicker">Boundaries</p>
+            <ol class="boundaries" id="boundaries"></ol>
+            <div id="stance-extras" class="stance-extras"></div>
+          </article>
+        </section>
+      </div>
+
+      <!-- CRUSH NOTE -->
+      <div class="view" id="view-crush" hidden>
+        <section class="page-hero crush-hero">
+          <p class="zone-kicker">Crush note</p>
+          <h1 class="page-title">I like, like you.</h1>
+          <p class="page-lede" id="crush-lede">
+            A classic crush note — short, brave, and clear.
+          </p>
+        </section>
+
+        <section class="crush-shell" id="crush-shell"></section>
+      </div>
+
+      <!-- JOURNAL -->
+      <div class="view" id="view-journal" hidden>
+        <section class="page-hero journal-hero">
+          <p class="zone-kicker">Friends journal</p>
+          <h1 class="page-title">Keep the good ones.</h1>
+          <p class="page-lede">
+            Notes and stories about friends and dates — private on this device.
+          </p>
+        </section>
+
+        <section class="journal-shell">
+          <form class="journal-form" id="journal-form" novalidate>
+            <div class="journal-form-grid">
+              <label class="field">
+                <span>Who</span>
+                <input
+                  id="journal-name"
+                  name="name"
+                  type="text"
+                  maxlength="80"
+                  placeholder="Friend or date"
+                  required
+                  autocomplete="off"
+                />
+              </label>
+              <label class="field">
+                <span>Kind</span>
+                <select id="journal-kind" name="kind">
+                  <option value="friend">Friend</option>
+                  <option value="date">Date</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+            </div>
+            <label class="field">
+              <span>Title <em>(optional)</em></span>
+              <input
+                id="journal-title"
+                name="title"
+                type="text"
+                maxlength="120"
+                placeholder="A small heading"
+                autocomplete="off"
+              />
+            </label>
+            <label class="field">
+              <span>Note or story</span>
+              <textarea
+                id="journal-body"
+                name="body"
+                rows="6"
+                maxlength="8000"
+                placeholder="Something kind you want to remember…"
+                required
+              ></textarea>
+            </label>
+            <div class="journal-actions">
+              <button type="submit" class="btn-primary" id="journal-save">
+                Save note
+              </button>
+              <button type="button" class="btn-quiet" id="journal-cancel" hidden>
+                Cancel edit
+              </button>
+            </div>
+            <p class="journal-hint">
+              Saved only in this browser. Clearing site data clears the journal.
+            </p>
+          </form>
+
+          <div class="journal-list-wrap">
+            <div class="journal-list-head">
+              <h2 class="journal-list-title">Your notes</h2>
+              <label class="journal-filter field-inline">
+                <span class="sr-only">Filter</span>
+                <select id="journal-filter" aria-label="Filter journal entries">
+                  <option value="all">All</option>
+                  <option value="friend">Friends</option>
+                  <option value="date">Dates</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+            </div>
+            <div id="journal-list" class="journal-list" aria-live="polite"></div>
+          </div>
+        </section>
+      </div>
+
+      <!-- TOGETHER (pair connections) -->
+      <div class="view" id="view-together" hidden></div>
+
+      <!-- PROFILE (+ shared friend messages) -->
+      <div class="view" id="view-profile" hidden></div>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        A shared language for feelings, interest, and the lines that keep both
+        honest.
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="./data.js?v=9"></script>
+    <script src="./extras-data.js?v=9"></script>
+    <script src="./utils.js?v=9"></script>
+    <script src="./store.js?v=9"></script>
+    <script src="./cloud.js?v=9"></script>
+    <script src="./connections-api.js?v=9"></script>
+    <script src="./extras.js?v=9"></script>
+    <script src="./spectrum.js?v=9"></script>
+    <script src="./crush.js?v=9"></script>
+    <script src="./journal.js?v=9"></script>
+    <script src="./together.js?v=9"></script>
+    <script src="./profile.js?v=9"></script>
+    <script src="./app.js?v=9"></script>
+  </body>
+</html>
